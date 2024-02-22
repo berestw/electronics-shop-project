@@ -2,6 +2,7 @@
 import pytest
 from src.item import Item
 from src.phone import Phone
+from src.item import InstantiateCSVError
 
 
 @pytest.fixture
@@ -66,3 +67,13 @@ def test_add(phone, item):
 def test_add_error(phone, item):
     with pytest.raises(ValueError):
         item + 2
+
+
+def test_instantiate_from_csv_not():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv(' ')
+
+
+def test_instantiate_from_csv_error():
+    with pytest.raises(KeyError):
+        Item.instantiate_from_csv('../src/items.csv')
