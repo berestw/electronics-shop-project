@@ -72,7 +72,7 @@ class Item:
     @classmethod
     def instantiate_from_csv(cls, csv_file):
         """добавление экземпляра классов из csv файла"""
-        try
+        try:
             cls.all = []
             with open(csv_file, newline="", encoding="windows-1251") as file:
                 data = csv.DictReader(file)
